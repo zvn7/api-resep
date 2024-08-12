@@ -5,10 +5,12 @@ import bcrypt from "bcryptjs";
 
 dotenv.config();
 
-const createToken = (userId) => {
-	return jwt.sign({ id: userId }, process.env.JWT_SECRET, {
-		expiresIn: process.env.JWT_EXPIRES_IN,
-	});
+const createToken = (user) => {
+	return jwt.sign(
+		{ id: user._id, username: user.username, role: user.role },
+		process.env.JWT_SECRET,
+		{ expiresIn: process.env.JWT_EXPIRES_IN }
+	);
 };
 
 export const registerUser = async (req, res) => {
@@ -65,11 +67,15 @@ export const loginUser = async (req, res) => {
 			});
 		}
 
-		// If correct, send token to client
-		const token = createToken(user._id);
+		// If correct, send token and user data to client
+		const token = createToken(user);
 		res.status(200).json({
 			status: "success",
 			token,
+			user: {
+				username: user.username,
+				role: user.role,
+			}
 		});
 	} catch (error) {
 		res.status(400).json({
@@ -78,3 +84,4 @@ export const loginUser = async (req, res) => {
 		});
 	}
 };
+

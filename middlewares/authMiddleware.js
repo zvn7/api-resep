@@ -1,4 +1,3 @@
-// middlewares/authMiddleware.js
 import jwt from "jsonwebtoken";
 import User from "../models/UserModel.js";
 import dotenv from "dotenv";
@@ -22,8 +21,27 @@ export const protect = async (req, res, next) => {
 	}
 
 	try {
+		// Verifikasi token dan ambil data user dari payload
 		const decoded = jwt.verify(token, process.env.JWT_SECRET);
-		req.user = await User.findById(decoded.id);
+
+		// Cari user berdasarkan ID
+		const user = await User.findById(decoded.id);
+
+		// Jika user tidak ditemukan
+		if (!user) {
+			return res.status(401).json({
+				status: "fail",
+				message: "The user belonging to this token no longer exists.",
+			});
+		}
+
+		// Tambahkan informasi user ke req.user
+		req.user = {
+			id: user._id,
+			username: user.username,
+			role: user.role,
+		};
+
 		next();
 	} catch (error) {
 		res.status(401).json({

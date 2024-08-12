@@ -82,10 +82,39 @@ const DeleteComment = async (req, res) => {
 	}
 };
 
-export {
-	TambahComment,
-	ReadComment,
-	DetailComment,
-	UpdateComment,
-	DeleteComment,
+const getCommentsByResepId = async (req, res) => {
+    const { resepId } = req.params;
+
+    try {
+        const comments = await Comment.find({ recipesId: resepId })
+            .populate("userId")
+            .populate("recipesId");
+
+        if (!comments || comments.length === 0) {
+            return res.status(404).json({
+                status: "failed",
+                message: "No comments found for this recipe",
+            });
+        }
+
+        res.status(200).json({
+            status: "success",
+            data: comments,
+        });
+    } catch (error) {
+        res.status(400).json({
+            status: "failed",
+            message: error.message,
+        });
+    }
 };
+
+export {
+    TambahComment,
+    ReadComment,
+    DetailComment,
+    UpdateComment,
+    DeleteComment,
+    getCommentsByResepId 
+};
+

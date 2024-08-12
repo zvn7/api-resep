@@ -1,0 +1,416 @@
+{
+	"info": {
+		"_postman_id": "dacfcbe4-d867-4754-94b5-ccb67ab65e4e",
+		"name": "Resep",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31880738"
+	},
+	"item": [
+		{
+			"name": "resep",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmEyYzIwZGJiMzllY2MxZGM0MzhhZSIsImlhdCI6MTcyMzQ4MjE4NiwiZXhwIjoxNzI0MDg2OTg2fQ.7efIj1d_Vz8H0gF0HbsZBBnpvCFNm99DdC5rpExT1IM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"recipeName\": \"Kue Lumpang Pandan\",\r\n    \"ingredient\": \"bahan bahan\",\r\n    \"step\": \"Kukus kelapa parut, garam dan daun pandan selama 15 menit. Blender daun pandan, daun suji & pasta pandan, kemudian saring. Siapkan bahan lainnya.\",\r\n    \"image\": \"https://example.com/nasigoreng.jpg\",\r\n    \"isFavorite\": false\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}/resep",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"resep"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmEyYzIwZGJiMzllY2MxZGM0MzhhZSIsImlhdCI6MTcyMzQ4MjE4NiwiZXhwIjoxNzI0MDg2OTg2fQ.7efIj1d_Vz8H0gF0HbsZBBnpvCFNm99DdC5rpExT1IM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{prod}}/reseplist",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"reseplist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get resep by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmEyYzIwZGJiMzllY2MxZGM0MzhhZSIsImlhdCI6MTcyMzQ4MjE4NiwiZXhwIjoxNzI0MDg2OTg2fQ.7efIj1d_Vz8H0gF0HbsZBBnpvCFNm99DdC5rpExT1IM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{prod}}/resep/66ba41b0494626367a8e7778",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"resep",
+								"66ba41b0494626367a8e7778"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmEyYzIwZGJiMzllY2MxZGM0MzhhZSIsImlhdCI6MTcyMzQ4MjE4NiwiZXhwIjoxNzI0MDg2OTg2fQ.7efIj1d_Vz8H0gF0HbsZBBnpvCFNm99DdC5rpExT1IM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"recipeName\": \"Kue Lumpang Pandan\",\r\n    \"ingredient\": \"bahan bahan edit\",\r\n    \"step\": \"Kukus kelapa parut, garam dan daun pandan selama 15 menit. Blender daun pandan, daun suji & pasta pandan, kemudian saring. Siapkan bahan lainnya. Panaskan kukusan. Olesi tipis2 cetakan dengan minyak goreng. Masukkan cetakan dalam kukusan, biarkan dulu sekitar 5 menit.\",\r\n    \"image\": \"https://example.com/nasigoreng.jpg\",\r\n    \"isFavorite\": false\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}/resep/66ba41b0494626367a8e7778",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"resep",
+								"66ba41b0494626367a8e7778"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmEyYzIwZGJiMzllY2MxZGM0MzhhZSIsImlhdCI6MTcyMzQ4MjE4NiwiZXhwIjoxNzI0MDg2OTg2fQ.7efIj1d_Vz8H0gF0HbsZBBnpvCFNm99DdC5rpExT1IM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{prod}}/resep/66ba41b0494626367a8e7778",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"resep",
+								"66ba41b0494626367a8e7778"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmEyYzIwZGJiMzllY2MxZGM0MzhhZSIsImlhdCI6MTcyMzQ4MjE4NiwiZXhwIjoxNzI0MDg2OTg2fQ.7efIj1d_Vz8H0gF0HbsZBBnpvCFNm99DdC5rpExT1IM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}/user",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comment",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmEyYzIwZGJiMzllY2MxZGM0MzhhZSIsImlhdCI6MTcyMzQ4MjE4NiwiZXhwIjoxNzI0MDg2OTg2fQ.7efIj1d_Vz8H0gF0HbsZBBnpvCFNm99DdC5rpExT1IM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"message\": \"tess komen\",\r\n    \"recipesId\": \"66ba414d494626367a8e7773\",\r\n    \"userId\": \"66ba2c20dbb39ecc1dc438ae\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}/comment",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmEyYzIwZGJiMzllY2MxZGM0MzhhZSIsImlhdCI6MTcyMzQ4MjE4NiwiZXhwIjoxNzI0MDg2OTg2fQ.7efIj1d_Vz8H0gF0HbsZBBnpvCFNm99DdC5rpExT1IM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}/commentlist",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"commentlist"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2YmEyYzIwZGJiMzllY2MxZGM0MzhhZSIsImlhdCI6MTcyMzQ4MjE4NiwiZXhwIjoxNzI0MDg2OTg2fQ.7efIj1d_Vz8H0gF0HbsZBBnpvCFNm99DdC5rpExT1IM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{prod}}/comment/66ba43ee494626367a8e778b",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"comment",
+								"66ba43ee494626367a8e778b"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"admin\",\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}}/auth/register",
+							"host": [
+								"{{prod}}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\": \"admin12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{prod}}/auth/login",
+							"host": [
+								"{{prod}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "prod",
+			"value": "https://api-resep-three.vercel.app/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "dev",
+			"value": "http://localhost:8000/api/v1",
+			"type": "string"
+		}
+	]
+}
