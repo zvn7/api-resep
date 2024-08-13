@@ -73,6 +73,7 @@ export const loginUser = async (req, res) => {
 			status: "success",
 			token,
 			user: {
+				id: user._id,
 				username: user.username,
 				role: user.role,
 			}
