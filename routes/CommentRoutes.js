@@ -14,10 +14,10 @@ const router = express.Router();
 // Protected Comment Routes
 router.post("/comment", protect, TambahComment);
 router.get("/commentlist", protect, ReadComment);
-// router.get("/comment/:id", protect, DetailComment);
-// router.put("/comment/:id", protect, UpdateComment);
 router.delete("/comment/:id", protect, DeleteComment);
 router.get("/commentbyresepId/:resepId", protect, getCommentsByResepId);
+// router.get("/comment/:id", protect, DetailComment);
+// router.put("/comment/:id", protect, UpdateComment);
 
 
 export default router;
