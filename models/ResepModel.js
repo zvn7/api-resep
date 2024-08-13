@@ -6,11 +6,11 @@ const resepListSchema = new mongoose.Schema({
         required: true,
     },
     ingredient: {
-        type: String,
+        type: [String],
         required: true,
     },
     step: {
-        type: String,
+        type: [String],
         required: true,
     },
     image: {
