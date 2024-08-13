@@ -1,10 +1,6 @@
 import mongoose from "mongoose";
 
-const commentSchema = new mongoose.Schema({
-    content: {
-        type: String,
-        required: true,
-    },
+const favoriteSchema = new mongoose.Schema({
     recipesId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Resep',
@@ -19,6 +15,6 @@ const commentSchema = new mongoose.Schema({
     timestamps: true
 });
 
-const Comment = mongoose.model('Comment', commentSchema);
+const Favorite = mongoose.model('Favorite', favoriteSchema);
 
-export default Comment;
+export default Favorite;

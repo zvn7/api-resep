@@ -16,10 +16,6 @@ const resepListSchema = new mongoose.Schema({
     image: {
         type: String,
         required: true
-    },
-    isFavorite: {
-        type: Boolean,
-        default: false
     }
 }, {
     timestamps: true

@@ -5,6 +5,7 @@ import AuthRouter from "./routes/AuthRoutes.js";
 import ResepRouter from "./routes/ResepRoutes.js";
 import UserRouter from "./routes/UserRoutes.js";
 import CommentRouter from "./routes/CommentRoutes.js";
+import FavoriteRouter from "./routes/FavoriteRouter.js";
 import cors from "cors";
 
 dotenv.config();
@@ -25,6 +26,7 @@ app.use("/api/v1/auth", AuthRouter);
 app.use("/api/v1/", ResepRouter);
 app.use("/api/v1/", UserRouter);
 app.use("/api/v1/", CommentRouter);
+app.use("/api/v1/", FavoriteRouter);
 
 // connect db
 ConnectDB();
