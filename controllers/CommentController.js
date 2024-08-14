@@ -89,7 +89,8 @@ const getCommentsByResepId = async (req, res) => {
 	try {
 		const comments = await Comment.find({ recipesId: resepId })
 			.populate("userId")
-			.populate("recipesId");
+			.populate("recipesId")
+			.sort({ createdAt: -1 });
 
 		if (!comments || comments.length === 0) {
 			return res.status(404).json({
