@@ -6,7 +6,6 @@ const userSchema = new mongoose.Schema(
 	{
 		fullname: {
 			type: String,
-			required: true,
 		},
 		username: {
 			type: String,
@@ -24,7 +23,6 @@ const userSchema = new mongoose.Schema(
 		},
 		phoneNumber: {
 			type: String,
-			required: true,
 		},
 		role: {
 			type: String,
