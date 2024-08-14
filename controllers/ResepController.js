@@ -26,13 +26,8 @@ const TambahResep = async (req, res) => {
 			imageUrl = uploadResponse;
 		}
 
-		const ingredientsArray = req.body.ingredient.split('\n').filter(Boolean);
-		const stepsArray = req.body.step.split('\n').filter(Boolean);
-
 		const newResep = await ResepModel.create({
 			...req.body,
-			ingredient: ingredientsArray,
-			step: stepsArray,
 			image: imageUrl,
 		});
 
@@ -47,7 +42,6 @@ const TambahResep = async (req, res) => {
 		});
 	}
 };
-
 
 // Update Resep
 const UpdateResep = async (req, res) => {
@@ -74,18 +68,9 @@ const UpdateResep = async (req, res) => {
 			imageUrl = uploadResponse;
 		}
 
-		// Parsing ingredients dan steps
-		const ingredientsArray = req.body.ingredient.split('\n').filter(Boolean);
-		const stepsArray = req.body.step.split('\n').filter(Boolean);
-
 		const updatedResep = await ResepModel.findByIdAndUpdate(
 			req.params.id,
-			{ 
-				...req.body, 
-				ingredient: ingredientsArray, 
-				step: stepsArray, 
-				image: imageUrl 
-			},
+			{ ...req.body, image: imageUrl },
 			{ new: true, runValidators: true }
 		);
 
@@ -100,7 +85,6 @@ const UpdateResep = async (req, res) => {
 		});
 	}
 };
-
 
 const ReadResep = async (req, res) => {
 	try {
