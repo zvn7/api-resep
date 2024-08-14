@@ -17,10 +17,10 @@ export const addFavorite = async (req, res) => {
 };
 
 export const removeFavorite = async (req, res) => {
-	const { userId, recipesId } = req.body;
+	const { idFavorite } = req.params;
 
 	try {
-		await Favorite.findOneAndDelete({ userId, recipesId });
+		await Favorite.findByIdAndDelete(idFavorite);
 		res.status(200).json({ message: "Resep berhasil dihapus dari favorit" });
 	} catch (error) {
 		res
