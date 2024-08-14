@@ -16,7 +16,6 @@ const createToken = (user) => {
 export const registerUser = async (req, res) => {
 	const { username, email, password } = req.body;
 	try {
-		// Hash password sebelum menyimpan user
 		const hashedPassword = await bcrypt.hash(password, 12);
 		const newUser = await User.create({
 			username,
@@ -33,7 +32,6 @@ export const registerUser = async (req, res) => {
 		});
 	} catch (error) {
 		if (error.code === 11000) {
-			// Handle duplicate key error (e.g., email or username already exists)
 			return res.status(400).json({
 				status: "fail",
 				message: "Username or email already exists",

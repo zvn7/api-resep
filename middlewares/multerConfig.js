@@ -1,8 +1,8 @@
 import multer from "multer";
-import path from "path"; // Impor modul path
+import path from "path";
 
 // Konfigurasi penyimpanan file
-const storage = multer.memoryStorage(); // Simpan file di memori
+const storage = multer.memoryStorage();
 
 const upload = multer({
 	storage,

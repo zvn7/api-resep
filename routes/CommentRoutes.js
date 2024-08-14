@@ -11,7 +11,6 @@ import {
 
 const router = express.Router();
 
-// Protected Comment Routes
 router.post("/comment", protect, TambahComment);
 router.get("/commentlist", protect, ReadComment);
 router.delete("/comment/:id", protect, DeleteComment);

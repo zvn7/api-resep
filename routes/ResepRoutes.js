@@ -5,7 +5,6 @@ import upload from '../middlewares/multerConfig.js';
 
 const router = express.Router();
 
-// Protected Recipe Routes
 router.post('/resep', protect, upload.single('image'), TambahResep);
 router.get('/reseplist', protect, ReadResep);
 router.get('/resep/:id', protect, DetailResep);

@@ -10,7 +10,6 @@ import {
 
 const router = express.Router();
 
-// Protected User Routes
 // router.post("/user", protect, TambahUser);
 router.get("/userlist", protect, ReadUser);
 router.get("/user/:id", protect, DetailUser);

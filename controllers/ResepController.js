@@ -1,4 +1,4 @@
-import imagekit from "../imagekit.js";
+import imagekit from "../helpers/imagekit.js";
 import ResepModel from "../models/ResepModel.js";
 
 // Tambah Resep
@@ -6,7 +6,6 @@ const TambahResep = async (req, res) => {
 	try {
 		let imageUrl = "";
 
-		// Handle image upload if present
 		if (req.file) {
 			const file = req.file;
 			const fileName = file.originalname;
@@ -14,7 +13,7 @@ const TambahResep = async (req, res) => {
 			const uploadResponse = await new Promise((resolve, reject) => {
 				imagekit.upload(
 					{
-						file: file.buffer, // Menggunakan file.buffer untuk upload
+						file: file.buffer,
 						fileName: fileName,
 					},
 					(err, result) => {
@@ -27,8 +26,13 @@ const TambahResep = async (req, res) => {
 			imageUrl = uploadResponse;
 		}
 
+		const ingredientsArray = req.body.ingredient.split('\n').filter(Boolean);
+		const stepsArray = req.body.step.split('\n').filter(Boolean);
+
 		const newResep = await ResepModel.create({
 			...req.body,
+			ingredient: ingredientsArray,
+			step: stepsArray,
 			image: imageUrl,
 		});
 
@@ -44,12 +48,12 @@ const TambahResep = async (req, res) => {
 	}
 };
 
+
 // Update Resep
 const UpdateResep = async (req, res) => {
 	try {
 		let imageUrl = req.body.image;
 
-		// Handle image upload if present
 		if (req.file) {
 			const file = req.file;
 			const fileName = file.originalname;
@@ -57,7 +61,7 @@ const UpdateResep = async (req, res) => {
 			const uploadResponse = await new Promise((resolve, reject) => {
 				imagekit.upload(
 					{
-						file: file.buffer, // Menggunakan file.buffer untuk upload
+						file: file.buffer,
 						fileName: fileName,
 					},
 					(err, result) => {
@@ -70,9 +74,18 @@ const UpdateResep = async (req, res) => {
 			imageUrl = uploadResponse;
 		}
 
+		// Parsing ingredients dan steps
+		const ingredientsArray = req.body.ingredient.split('\n').filter(Boolean);
+		const stepsArray = req.body.step.split('\n').filter(Boolean);
+
 		const updatedResep = await ResepModel.findByIdAndUpdate(
 			req.params.id,
-			{ ...req.body, image: imageUrl },
+			{ 
+				...req.body, 
+				ingredient: ingredientsArray, 
+				step: stepsArray, 
+				image: imageUrl 
+			},
 			{ new: true, runValidators: true }
 		);
 
@@ -88,7 +101,7 @@ const UpdateResep = async (req, res) => {
 	}
 };
 
-// Fungsi lainnya
+
 const ReadResep = async (req, res) => {
 	try {
 		const resep = await ResepModel.find();
