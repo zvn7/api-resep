@@ -88,7 +88,7 @@ const UpdateResep = async (req, res) => {
 
 const ReadResep = async (req, res) => {
 	try {
-		const resep = await ResepModel.find();
+		const resep = await ResepModel.find().sort({ createdAt: -1 });
 		return res.status(200).json({
 			status: "success",
 			data: resep,

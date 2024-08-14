@@ -11,7 +11,7 @@ const upload = multer({
 		const filetypes = /jpeg|jpg|png|gif/;
 		const mimetype = filetypes.test(file.mimetype);
 		const extname = filetypes.test(
-			path.extname(file.originalname).toLowerCase() // Memeriksa ekstensi file
+			path.extname(file.originalname).toLowerCase()
 		);
 
 		if (mimetype && extname) {
