@@ -8,7 +8,7 @@ const upload = multer({
 	storage,
 	fileFilter: (req, file, cb) => {
 		// Hanya menerima file gambar
-		const filetypes = /jpeg|jpg|png|gif/;
+		const filetypes = /jpeg|jpg|png/;
 		const mimetype = filetypes.test(file.mimetype);
 		const extname = filetypes.test(
 			path.extname(file.originalname).toLowerCase()
